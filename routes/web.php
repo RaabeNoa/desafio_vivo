@@ -6,13 +6,14 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
+//Route::get('/', function () {
+//    return view('knowledge.index');
+//});
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['prefix' => 'knowledge'], function ()  {
+    Route::get('', 'KnowledgeController@index')->name('list_knowledge');
+    Route::get('/add', 'KnowledgeController@create')->name('form_add_knowledge');
+    Route::post('/add', 'KnowledgeController@store')->name('add_knowledge');
+    Route::delete('{id}', 'KnowledgeController@destroy')->name('delete_knowledge');
 });
