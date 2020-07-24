@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\KnowledgeCandidate;
+use App\Models\KnowledgeApplication;
 use Illuminate\Http\Request;
 
 class KnowledgeCandidateController extends Controller
@@ -41,10 +41,10 @@ class KnowledgeCandidateController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\KnowledgeCandidate  $knowledgeCandidate
+     * @param  \App\Models\KnowledgeApplication  $knowledgeCandidate
      * @return \Illuminate\Http\Response
      */
-    public function show(KnowledgeCandidate $knowledgeCandidate)
+    public function show(KnowledgeApplication $knowledgeCandidate)
     {
         //
     }
@@ -52,10 +52,10 @@ class KnowledgeCandidateController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\KnowledgeCandidate  $knowledgeCandidate
+     * @param  \App\Models\KnowledgeApplication  $knowledgeCandidate
      * @return \Illuminate\Http\Response
      */
-    public function edit(KnowledgeCandidate $knowledgeCandidate)
+    public function edit(KnowledgeApplication $knowledgeCandidate)
     {
         //
     }
@@ -64,10 +64,10 @@ class KnowledgeCandidateController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\KnowledgeCandidate  $knowledgeCandidate
+     * @param  \App\Models\KnowledgeApplication  $knowledgeCandidate
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, KnowledgeCandidate $knowledgeCandidate)
+    public function update(Request $request, KnowledgeApplication $knowledgeCandidate)
     {
         //
     }
@@ -75,10 +75,10 @@ class KnowledgeCandidateController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\KnowledgeCandidate  $knowledgeCandidate
+     * @param  \App\Models\KnowledgeApplication  $knowledgeCandidate
      * @return \Illuminate\Http\Response
      */
-    public function destroy(KnowledgeCandidate $knowledgeCandidate)
+    public function destroy(KnowledgeApplication $knowledgeCandidate)
     {
         //
     }

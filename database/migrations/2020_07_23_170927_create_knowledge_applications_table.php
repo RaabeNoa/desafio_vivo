@@ -14,7 +14,10 @@ class CreateKnowledgeCandidatesTable extends Migration
     public function up()
     {
         Schema::create('knowledge_candidates', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->bigInteger('id_candidate')->unsigned();
+            $table->bigInteger('id_knowledge')->unsigned();
+            $table->integer('grade')->unsigned();
             $table->timestamps();
         });
     }
