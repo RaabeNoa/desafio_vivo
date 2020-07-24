@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKnowledgeCandidatesTable extends Migration
+class CreateKnowledgeApplicationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,24 @@ class CreateKnowledgeCandidatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('knowledge_candidates', function (Blueprint $table) {
+        Schema::create('knowledge_applications', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('id_candidate')->unsigned();
+            $table->bigInteger('id_application')->unsigned();
             $table->bigInteger('id_knowledge')->unsigned();
             $table->integer('grade')->unsigned();
             $table->timestamps();
+
+            $table->foreign('id_application')
+                ->references('id')
+                ->on('applications')
+                ->onUpdate('NO ACTION')
+                ->onDelete('CASCADE');
+            $table->foreign('id_knowledge')
+                ->references('id')
+                ->on('knowledge')
+                ->onUpdate('NO ACTION')
+                ->onDelete('CASCADE');
+
         });
     }
 
@@ -29,6 +41,6 @@ class CreateKnowledgeCandidatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('knowledge_candidates');
+        Schema::dropIfExists('knowledge_applications');
     }
 }

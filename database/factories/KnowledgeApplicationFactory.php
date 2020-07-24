@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Models\KnowledgeCandidate;
+use App\Models\KnowledgeApplication;
 use Faker\Generator as Faker;
 
-$factory->define(KnowledgeCandidate::class, function (Faker $faker) {
+$factory->define(KnowledgeApplication::class, function (Faker $faker) {
     return [
         //
     ];
