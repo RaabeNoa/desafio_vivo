@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\KnowledgeApplication;
 use Illuminate\Http\Request;
 
-class KnowledgeCandidateController extends Controller
+class KnowledgeApplicationController extends Controller
 {
     /**
      * Display a listing of the resource.

@@ -15,17 +15,21 @@ class ApplicationFormRequest extends FormRequest
     {
         return [
             'name'  => 'required|min:3',
-            'email' => 'required|email'
+            'email' => 'required|email',
+            'grade' => 'required|numeric|max:10'
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => "O campo nome é obrigatório",
-            'email.required' => "O campo email é obrigatório",
-            'name.min' => "Informe o nome completo",
-            'email'    => 'Informe um email válido'
+            'name.required'  => 'O campo nome é obrigatório',
+            'email.required' => 'O campo email é obrigatório',
+            'name.min'       => 'Informe o nome completo',
+            'email'          => 'Informe um email válido',
+            'grade.required' => 'O campo nota é obrigatório',
+            'grade.numeric'  => 'Informe apenas números no campo de nota',
+            'grade.max'      => 'A nota máxima é 10'
         ];
     }
 }

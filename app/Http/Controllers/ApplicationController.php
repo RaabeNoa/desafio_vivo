@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ApplicationFormRequest;
 use App\Http\Requests\KnowledgeFormRequest;
+use App\Jobs\SendEmail;
 use App\Models\Application;
 use App\Models\Knowledge;
+use App\Models\KnowledgeApplication;
+use App\Repositories\KnowledgeApplicationRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ApplicationController extends Controller
@@ -27,16 +31,37 @@ class ApplicationController extends Controller
 
     public function store(ApplicationFormRequest $request)
     {
-        Application::create([
-            'name' => $request->name,
+
+        $application = Application::create([
+            'name'  => $request->name,
             'email' => $request->email,
         ]);
+
+        $knowledge = Knowledge::query()->get('id');
+        foreach ($knowledge as $k){
+            KnowledgeApplication::create([
+                'id_application' => $application->id,
+                'id_knowledge'   => $k['id'],
+                'grade'          => $request->grade
+            ]);
+        }
 
         $request->session()
             ->flash(
                 'message',
                 "Aplicação enviada com sucesso!");
 
+        $this->sendEmail($application, $request);
         return redirect()->route('home');
+    }
+
+    public function sendEmail($application, $request)
+    {
+        $repository = new KnowledgeApplicationRepository();
+        $repository->chooseEmails($request);
+
+        $details = ['email' => $application->email];
+        $emailJob = (new SendEmail($details))->delay(Carbon::now()->addMinutes(5));
+        dispatch($emailJob);
     }
 }
