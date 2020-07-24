@@ -11,6 +11,8 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::get('test-email', 'ApplicationController@store');
+
 Route::group(['prefix' => 'knowledge'], function ()  {
     Route::get('', 'KnowledgeController@index')->name('list_knowledge');
     Route::get('/add', 'KnowledgeController@create')->name('form_add_knowledge');
